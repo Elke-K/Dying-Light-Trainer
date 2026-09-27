@@ -1,0 +1,9 @@
+﻿<Application x:Class="dying_light_trainer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:dying_light_trainer"
+             StartupUri="ChoiceMenu.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
