@@ -1,0 +1,98 @@
+﻿<Window x:Class="dying_light_trainer.InventoryManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dying_light_trainer"
+        mc:Ignorable="d"
+        Title="Inventory Manager" Height="450" Width="600" Background="#1E1E1E">
+
+    <Grid>
+        <TabControl Margin="0,5,0,0" HorizontalContentAlignment="Center" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabControl.Resources>
+                <Style TargetType="TabPanel">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Weapon Attributes" FontWeight="Bold" IsSelected="True">
+                <Grid>
+                    <!-- Weapon selector row -->
+                    <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">Weapon To Edit:</TextBlock>
+                    <ComboBox Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0" Name="weapons_inventory2" Foreground="Black" SelectedIndex="0" DisplayMemberPath="DisplayName" FontWeight="Normal" SelectionChanged="UpdateWeaponAttributesUI"></ComboBox>
+
+                    <!-- Left column: Quantity / Repairs / Durability / Rarity -->
+                    <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,70,0,0">Quantity</TextBlock>
+                    <TextBox Name="quantity_box" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,95,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Normal"></TextBox>
+
+                    <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,140,0,0">Repairs Used</TextBlock>
+                    <TextBox Name="repairs_box" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,165,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Normal"></TextBox>
+
+                    <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,210,0,0">Durability</TextBlock>
+                    <TextBox Name="durabiility_box" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,235,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Normal"></TextBox>
+
+                    <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,280,0,0">Rarity/Quality</TextBlock>
+                    <ComboBox Name="rarity_box" Width="150" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,305,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Normal">
+                        <ComboBoxItem Tag="8">Gray</ComboBoxItem>
+                        <ComboBoxItem Tag="9">Green</ComboBoxItem>
+                        <ComboBoxItem Tag="10">Blue</ComboBoxItem>
+                        <ComboBoxItem Tag="11">Purple</ComboBoxItem>
+                        <ComboBoxItem Tag="12">Orange</ComboBoxItem>
+                        <ComboBoxItem Tag="13" IsSelected="True">Gold</ComboBoxItem>
+                    </ComboBox>
+
+                    <!-- Right column: Upgrade Slots 1-4 (2x2) + Modification -->
+                    <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="240,70,0,0">Upgrade Slot 1</TextBlock>
+                    <ComboBox Name="upgrade_box1" Width="140" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,95,220,0" HorizontalContentAlignment="Center" DisplayMemberPath="DisplayName" VerticalContentAlignment="Center" FontSize="14" FontWeight="Normal">
+                    </ComboBox>
+
+                    <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="440,70,0,0">Upgrade Slot 2</TextBlock>
+                    <ComboBox Name="upgrade_box2" Width="140" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,95,20,0" HorizontalContentAlignment="Center" DisplayMemberPath="DisplayName" VerticalContentAlignment="Center" FontSize="14" FontWeight="Normal">
+                    </ComboBox>
+
+                    <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="240,140,0,0">Upgrade Slot 3</TextBlock>
+                    <ComboBox Name="upgrade_box3" Width="140" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,165,220,0" HorizontalContentAlignment="Center" DisplayMemberPath="DisplayName" VerticalContentAlignment="Center" FontSize="14" FontWeight="Normal">
+                    </ComboBox>
+
+                    <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="440,140,0,0">Upgrade Slot 4</TextBlock>
+                    <ComboBox Name="upgrade_box4" Width="140" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,165,20,0" HorizontalContentAlignment="Center" DisplayMemberPath="DisplayName" VerticalContentAlignment="Center" FontSize="14" FontWeight="Normal">
+                    </ComboBox>
+
+                    <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="320,210,0,0">Modification</TextBlock>
+                    <ComboBox Name="modification_box" Width="200" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,235,80,0" DisplayMemberPath="DisplayName" FontSize="14" FontWeight="Normal" HorizontalContentAlignment="Center" />
+
+                    <Button Name="update_weapon_button" Content="Update Weapon" Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,305,80,0" FontSize="14" FontWeight="Bold" Click="UpdateWeapon"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Change Weapon">
+                <Grid>
+                    <TextBlock FontSize="20" Foreground="White" HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="0,50,0,0">Select weapon to alter</TextBlock>
+                    <ComboBox HorizontalContentAlignment="Center" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,95,0,0" Name="weapons_inventory" Foreground="Black" SelectedIndex="0" DisplayMemberPath="DisplayName"></ComboBox>
+
+                    <TextBlock FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,150" TextWrapping="Wrap" TextAlignment="Center">Select weapon to change to</TextBlock>
+                    <ComboBox HorizontalContentAlignment="Center" Width="200" Height="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,110" Name="weapons_list" Foreground="Black" DisplayMemberPath="DisplayName" SelectedIndex="0"></ComboBox>
+
+                    <Button Click="OnScanButtonClick" Width="100" Height="45" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,85,20,0">
+                        <TextBlock TextWrapping="Wrap" Width="100" TextAlignment="Center" FontSize="14" FontWeight="Bold">Scan game weapons</TextBlock>
+                    </Button>
+                    <Button Width="150" Height="35" Content="Change Weapon" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,35" Click="ChangeWeapon"></Button>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" Foreground="White" Margin="0,0,0,5" Name="lbltext"></TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+        Padding="0" Click="CloseInventoryManager">
+            <TextBlock Text="←" FontSize="40"
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               TextAlignment="Center" LineHeight="35" LineStackingStrategy="BlockLineHeight"/>
+        </Button>
+        <Button Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,10,0,0"
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+        Padding="0" Click="RefreshInventory">
+            <TextBlock Text="↻" FontSize="40"
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               TextAlignment="Center" LineHeight="35" LineStackingStrategy="BlockLineHeight"/>
+        </Button>
+
+    </Grid>
+</Window>

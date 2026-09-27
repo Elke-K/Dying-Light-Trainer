@@ -1,0 +1,19 @@
+﻿<Window x:Class="DyingLightTrainer.DyingLight1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dying Light Trainer" Height="300" Width="400" Background="#1E1E1E">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Dying Light External Trainer" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+            <TextBlock x:Name="lblStatus" Text="Status: Waiting for game..." Foreground="Gray" Margin="0,0,0,20"/>
+
+            <CheckBox x:Name="chkInfiniteHook" Content="Infinite Grappling Hook" Foreground="White" FontSize="14" 
+                      Checked="chkInfiniteHook_Checked" Unchecked="chkInfiniteHook_Unchecked"/>
+            <CheckBox Name="chkGodMode" Content="God Mode" Foreground="White" FontSize="14" Checked="chkGodMode_Checked" Unchecked="chkGodMode_Unchecked"></CheckBox>
+            <CheckBox Name="chkCloning" Content="Cloning" Foreground="White" FontSize="14" Checked="chkCloning_Checked" Unchecked="chkCloning_Unchecked"></CheckBox>
+            <Button Content="Inventory manager" Width="150" Click="OpenInventoryManager" HorizontalAlignment="Left" Margin="2, 10, 0, 0" FontSize="14" FontWeight="bold"></Button>
+            
+            <!-- This matches the lblStatus used in your C# code -->
+        </StackPanel>
+    </Grid>
+</Window>
